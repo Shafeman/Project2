@@ -1,8 +1,8 @@
 package P2I1;
 
-public interface RefridgeratorDisplay {
+public interface RefrigeratorDisplay {
 	
-	public void setRefridgerator(/*refridge class*/);
+	public void setRefrigerator(RefrigeratorMachine refrigerator);
 	public void turnFridgeLightOn();
 	public void turnFridgeLightOff();
 	public void turnFreezerLightOn();
