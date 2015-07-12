@@ -16,6 +16,8 @@ public class RefrigeratorMachine {
         openedFreezerClosedFridge = new ClosedFreezerOpenedFridge(this);
         closedFreezerOpenedFridge = new ClosedFreezerClosedFridge(this);
         closedFreezerClosedFridge = new ClosedFreezerClosedFridge(this);
+
+        refrigeratorState = closedFreezerClosedFridge;
     }
 
     public void setRefrigeratorState(RefrigeratorState refrigeratorState) {
