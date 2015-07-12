@@ -1,6 +1,5 @@
-/**
- * Created by Nathan on 7/12/2015.
- */
+package P2I1;
+
 public class ClosedFreezerClosedFridge implements RefrigeratorState {
 
     RefrigeratorMachine refrigeratorMachine;

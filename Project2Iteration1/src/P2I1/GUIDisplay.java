@@ -9,7 +9,7 @@ public class GUIDisplay extends JFrame implements ActionListener, RefridgeratorD
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
