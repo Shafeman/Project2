@@ -6,6 +6,7 @@ import javax.swing.JButton;
  * Code from the book, This abstract class 
  * helps get rid of conditionals 
  */
+@SuppressWarnings("serial")
 public abstract class GUIButton extends JButton{
 
 	
