@@ -1,3 +1,9 @@
+/**
+ * Barbarians: Douglas Brian Shaffer, Jonathan Franco
+ * The GUIDisplay controls the display of the refrigerator. It extends JFrame
+ * and implements ActionListener and RefrigeratorDisplay.
+ */
+
 package P2I1;
 
 import java.awt.event.ActionEvent;
@@ -11,13 +17,12 @@ import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Component;
-import java.awt.Cursor;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class GUIDisplay extends JFrame implements ActionListener, RefrigeratorDisplay {
 	
-	private RefrigeratorMachine refrigerator;
+	private Refrigerator refrigerator;
 	private JLabel lblRoomTemp = new JLabel("Room Temp");
 	private JLabel lblDesFridgeTemp = new JLabel("Desired Fridge Temp");
 	private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
@@ -34,18 +39,27 @@ public class GUIDisplay extends JFrame implements ActionListener, RefrigeratorDi
 	private JTextField txtDesFreezerTemp = new JTextField(40);
 	private JLabel lblFridgeLight = new JLabel("Fridge light <off>");
 	private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
-	private JLabel lblFridgeTemp = new JLabel("Fridge temp <39>");
-	private JLabel lblFreezerTemp = new JLabel("Freezer temp <-4>");
-	private JLabel lblFridgeCompStatus = new JLabel("Fridge <idle>");
-	private JLabel lblFreezerCompStatus = new JLabel("Freezer <idle>");
+	private JLabel lblFridgeTemp = new JLabel("Fridge temp <>");
+	private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
+	private JLabel lblFridgeCompStatus = new JLabel("Fridge <cooling>");
+	private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
 	private final JPanel pnlControlButtons = new JPanel();
 	private final JPanel pnlReadOuts = new JPanel();
 	private final JPanel pnlButtonGridFormat = new JPanel();
 	private final JPanel pnlStatus = new JPanel();
 	private final JPanel pnlDesiredFields = new JPanel();
-			
+
+	/**
+	 * Contructor. Creates the Display.
+	 */
 	public GUIDisplay() {
-		setTitle("Refrigerator");
+		super("Refrigerator");
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent event) {
+				System.exit(0);
+			}
+		});
+		
 		setPreferredSize(new Dimension(640, 290));
 		getContentPane().setLayout(new BorderLayout(15, 15));	
 		
@@ -95,73 +109,180 @@ public class GUIDisplay extends JFrame implements ActionListener, RefrigeratorDi
 		pnlStatus.add(lblFreezerCompStatus);
 		lblFreezerCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
 		
+		btnSetRoomTemp.addActionListener(this);
+		btnSetDesFridgeTemp.addActionListener(this);
+		btnSetDesFreezerTemp.addActionListener(this);
+		btnOpenFridge.addActionListener(this);
+		btnCloseFridge.addActionListener(this);
+		btnOpenFreezer.addActionListener(this);
+		btnCloseFreezer.addActionListener(this);
+		
 		pack();
 		setVisible(true);
 	}
-	
-	public static void main(String[] args) {
-		GUIDisplay display = new GUIDisplay();
-		
-	}
 
+	/**
+	 * Sets the text for the lblFridgeLight to show the
+	 * light is on.
+	 */
 	@Override
 	public void turnFridgeLightOn() {
-		// TODO Auto-generated method stub
-		
+		lblFridgeLight.setText("Fridge light <on>");
 	}
 
+	/**
+	 * Sets the text for the lblFridgeLight to show the
+	 * light is off.
+	 */
 	@Override
 	public void turnFridgeLightOff() {
-		// TODO Auto-generated method stub
-		
+		lblFridgeLight.setText("Fridge light <off>");
 	}
 
+	/**
+	 * Sets the text for the lblFreezerLight to show the
+	 * light is on.
+	 */
 	@Override
 	public void turnFreezerLightOn() {
-		// TODO Auto-generated method stub
-		
+		lblFreezerLight.setText("Freezer light <on>");		
 	}
 
+	/**
+	 * Sets the text for the lblFreezerLight to show the
+	 * light is off.
+	 */
 	@Override
 	public void turnFreezerLightOff() {
-		// TODO Auto-generated method stub
-		
+		lblFreezerLight.setText("Freezer light <off>");		
 	}
-
+	
+	/**
+	 * Sets the refrigerator that the display will show.
+	 */
 	@Override
-	public void freezerDoorClosed() {
-		// TODO Auto-generated method stub
-		
+	public void setRefrigerator(Refrigerator refrigerator) {
+		this.refrigerator = refrigerator;		
 	}
 
+	/**
+	 * Sets the text for the lblFreezerCompStatus to show the
+	 * freezer is cooling.
+	 */
 	@Override
-	public void freezerDoorOpen() {
-		// TODO Auto-generated method stub
-		
+	public void freezerCooling() {
+		lblFreezerCompStatus.setText("Freezer <cooling>");
 	}
 
+	/**
+	 * Sets the text for the lblFreezerCompStatus to show the
+	 * freezer is idle.
+	 */
 	@Override
-	public void fridgeDoorClosed() {
-		// TODO Auto-generated method stub
-		
+	public void freezerIdle() {
+		lblFreezerCompStatus.setText("Freezer <idle>");
 	}
 
+	/**
+	 * Sets the text for the lblFridgeCompStatus to show the
+	 * fridge is cooling.
+	 */
 	@Override
-	public void fridgeDoorOpen() {
-		// TODO Auto-generated method stub
-		
+	public void fridgeCooling() {
+		lblFridgeCompStatus.setText("Freezer <cooling>");
 	}
 
+	/**
+	 * Sets the text for the lblFridgeCompStatus to show the
+	 * fridge is idle.
+	 */
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void fridgeIdle() {
+		lblFridgeCompStatus.setText("Freezer <idle>");		
 	}
 
+	/**
+	 * updates the fridge temp with the correct value
+	 */
 	@Override
-	public void setRefrigerator(RefrigeratorMachine refrigerator) {
-		// TODO Auto-generated method stub
-		
+	public void updateFridgeTemp(int temp) {
+		lblFridgeTemp.setText("Fridge temp <" + temp +">");
 	}
 
+	/**
+	 * updates the freezer temp with the correct value
+	 */
+	@Override
+	public void updateFreezerTemp(int temp) {
+		lblFreezerTemp.setText("Freezer temp <" + temp +">");		
+	}
+	
+	/**
+	 * Sets the initial temperatures of the display
+	 * @param - int room
+	 * @param - int fridge
+	 * @param - int freezer
+	 */
+	public void setStartTemps(int room, int fridge, int freezer){
+		txtRoomTemp.setText("" + room);
+		txtDesFridgeTemp.setText("" + fridge);
+		txtDesFreezerTemp.setText("" + freezer);
+	}
+
+	/**
+	 * Calls the appropriate method in refrigerator based on the event
+	 * that took place in the GUI
+	 */
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		/*
+		 * If a non integer value is entered for any of the user inputs
+		 * the GUI resets the input to the previous value. Within each try
+		 * block, the system validates that the temp entered is within the
+		 * allowed range and sets the values appropriately.
+		 */
+		if (event.getSource().equals(btnSetRoomTemp)){
+			try{
+				int temp = Integer.parseInt(txtRoomTemp.getText());
+				if(refrigerator.checkValidRoomTemperature(temp)){
+					refrigerator.setRoomTemperature(temp);
+				} else {
+					txtRoomTemp.setText("" + refrigerator.getRoomTemperature());
+				}
+			} catch (NumberFormatException e) {
+				txtRoomTemp.setText("" + refrigerator.getRoomTemperature());
+			}
+			
+		} else if (event.getSource().equals(btnSetDesFridgeTemp)){
+			try{
+				int temp = Integer.parseInt(txtDesFridgeTemp.getText());
+				if(refrigerator.checkValidFridgeTemperature(temp)){
+					refrigerator.setDesiredFridgeTemperature(temp);
+				} else {
+					txtDesFridgeTemp.setText("" + refrigerator.getDesiredFridgeTemperature());
+				}
+			} catch (NumberFormatException e){
+				txtDesFridgeTemp.setText("" + refrigerator.getDesiredFridgeTemperature());
+			}
+		} else if (event.getSource().equals(btnSetDesFreezerTemp)){
+			try{
+				int temp = Integer.parseInt(txtDesFreezerTemp.getText());
+				if(refrigerator.checkValidFreezerTemperature(temp)){
+					refrigerator.setDesiredFreezerTemperature(temp);
+				} else {
+					txtDesFreezerTemp.setText("" + refrigerator.getDesiredFreezerTemperature());
+				}
+			} catch (NumberFormatException e){
+				txtDesFreezerTemp.setText("" + refrigerator.getDesiredFreezerTemperature());
+			}
+		} else if (event.getSource().equals(btnOpenFridge)){
+			refrigerator.processOpenFridgeDoor();
+		} else if (event.getSource().equals(btnOpenFreezer)){
+			refrigerator.processOpenFreezerDoor();
+		} else if (event.getSource().equals(btnCloseFridge)){
+			refrigerator.processCloseFridgeDoor();
+		} else if (event.getSource().equals(btnCloseFreezer)){
+			refrigerator.processCloseFreezerDoor();
+		}		
+	}
 }
