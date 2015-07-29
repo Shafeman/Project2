@@ -29,7 +29,7 @@ public abstract class RefrigeratorDisplay extends Observable{
 	/**
 	 * Do the initialization to make the context an observer
 	 */
-	public void initialized() {
+	public void initialize() {
 		context.initialize();
 	}
 	
