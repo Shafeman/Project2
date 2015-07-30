@@ -1,5 +1,52 @@
 package P2I1;
 
-public class DoorClosedCoolingState {
+public class DoorClosedCoolingState extends RefrigeratorState 
+implements DoorClosedIdleListener, DoorOpenCoolingListener{
+
+	public static DoorClosedCoolingState instance;
+	
+	/**
+	 * Singleton
+	 */
+	private DoorClosedCoolingState() {
+		
+	}
+	/**
+	 * Singleton
+	 * @return the object
+	 */
+	public static DoorClosedCoolingState instance() {
+		if(instance == null) {
+			instance = new DoorClosedCoolingState();			
+		}
+		return instance;
+	}
+	
+	
+	
+	
+	@Override
+	public void DoorOpenCooling(DoorOpenCoolingEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void DoorClosedIdle(DoorClosedIdleEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void leave() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

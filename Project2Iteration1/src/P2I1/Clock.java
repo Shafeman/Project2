@@ -5,7 +5,9 @@
  */
 package P2I1;
 
-public class Clock implements Runnable {
+import java.util.Observable;
+
+public class Clock extends Observable implements Runnable {
 	private static Refrigerator refrigerator;
 	
 	/**
