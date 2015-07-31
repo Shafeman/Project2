@@ -24,7 +24,7 @@ import javax.swing.border.EmptyBorder;
 public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	
 	private static SimpleDisplay frame;
-	private Refrigerator refrigerator;
+
 	
 	private GUIDisplay() {
 		frame = new SimpleDisplay();
@@ -32,27 +32,26 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	}
 	
 	private class SimpleDisplay extends JFrame {
-		//private Refrigerator refrigerator;
 		private JLabel lblRoomTemp = new JLabel("Room Temp");
 		private JLabel lblDesFridgeTemp = new JLabel("Desired Fridge Temp");
-		private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
+		//private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
 		private JLabel lblStatus = new JLabel("Status");
 		private JButton btnSetRoomTemp = new JButton("Set Room Temp");
 		private JButton btnSetDesFridgeTemp = new JButton("Set Desired Fridge Temp");
-		private JButton btnSetDesFreezerTemp = new JButton("set Desired Freezer Temp");
+		//private JButton btnSetDesFreezerTemp = new JButton("set Desired Freezer Temp");
 		private JButton btnOpenFridge = new JButton("Open Fridge Door");
 		private JButton btnCloseFridge = new JButton("Close Fridge Door");
-		private JButton btnOpenFreezer = new JButton("Open Freezer Door");
-		private JButton btnCloseFreezer = new JButton("Close Freezer Door");
+		//private JButton btnOpenFreezer = new JButton("Open Freezer Door");
+		//private JButton btnCloseFreezer = new JButton("Close Freezer Door");
 		private JTextField txtRoomTemp = new JTextField(40);
 		private JTextField txtDesFridgeTemp = new JTextField(40);
-		private JTextField txtDesFreezerTemp = new JTextField(40);
+		//private JTextField txtDesFreezerTemp = new JTextField(40);
 		private JLabel lblFridgeLight = new JLabel("Fridge light <off>");
-		private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
+		//private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
 		private JLabel lblFridgeTemp = new JLabel("Fridge temp <>");
-		private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
+		//private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
 		private JLabel lblFridgeCompStatus = new JLabel("Fridge <cooling>");
-		private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
+		//private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
 		private final JPanel pnlControlButtons = new JPanel();
 		private final JPanel pnlReadOuts = new JPanel();
 		private final JPanel pnlButtonGridFormat = new JPanel();
@@ -75,16 +74,16 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			
 			pnlDesiredFields.setBorder(new EmptyBorder(0, 5, 0, 0));
 			getContentPane().add(pnlDesiredFields, BorderLayout.NORTH);
-			pnlDesiredFields.setLayout(new GridLayout(3, 3, 5, 5));
+			pnlDesiredFields.setLayout(new GridLayout(2, 2, 5, 5));
 			pnlDesiredFields.add(lblRoomTemp);
 			pnlDesiredFields.add(txtRoomTemp);
 			pnlDesiredFields.add(btnSetRoomTemp);
 			pnlDesiredFields.add(lblDesFridgeTemp);
 			pnlDesiredFields.add(txtDesFridgeTemp);
 			pnlDesiredFields.add(btnSetDesFridgeTemp);
-			pnlDesiredFields.add(lblDesFreezerTemp);		
-			pnlDesiredFields.add(txtDesFreezerTemp);		
-			pnlDesiredFields.add(btnSetDesFreezerTemp);
+			//pnlDesiredFields.add(lblDesFreezerTemp);		
+			//pnlDesiredFields.add(txtDesFreezerTemp);		
+			//pnlDesiredFields.add(btnSetDesFreezerTemp);
 			
 			getContentPane().add(pnlControlButtons, BorderLayout.WEST);
 			pnlControlButtons.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));		
@@ -94,8 +93,8 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			pnlButtonGridFormat.setLayout(new GridLayout(2, 2, 0, 0));
 			pnlButtonGridFormat.add(btnOpenFridge);
 			pnlButtonGridFormat.add(btnCloseFridge);
-			pnlButtonGridFormat.add(btnOpenFreezer);
-			pnlButtonGridFormat.add(btnCloseFreezer);
+			//pnlButtonGridFormat.add(btnOpenFreezer);
+			//pnlButtonGridFormat.add(btnCloseFreezer);
 			
 			getContentPane().add(pnlReadOuts, BorderLayout.SOUTH);
 			pnlReadOuts.setBorder(new EmptyBorder(0, 5, 0, 0));
@@ -108,24 +107,24 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			lblFridgeLight.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeLight);
 			lblFridgeLight.setBorder(new EmptyBorder(2, 2, 2, 2));
-			pnlStatus.add(lblFreezerLight);
-			lblFreezerLight.setBorder(new EmptyBorder(2, 2, 2, 2));
+			//pnlStatus.add(lblFreezerLight);
+			//lblFreezerLight.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeTemp);
 			lblFridgeTemp.setBorder(new EmptyBorder(2, 2, 2, 2));
-			pnlStatus.add(lblFreezerTemp);
-			lblFreezerTemp.setBorder(new EmptyBorder(2, 2, 2, 2));
+			//pnlStatus.add(lblFreezerTemp);
+			//lblFreezerTemp.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeCompStatus);
 			lblFridgeCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
-			pnlStatus.add(lblFreezerCompStatus);
-			lblFreezerCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
+			//pnlStatus.add(lblFreezerCompStatus);
+			//lblFreezerCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
 			
 			btnSetRoomTemp.addActionListener(GUIDisplay.this);
 			btnSetDesFridgeTemp.addActionListener(GUIDisplay.this);
-			btnSetDesFreezerTemp.addActionListener(GUIDisplay.this);
+			//btnSetDesFreezerTemp.addActionListener(GUIDisplay.this);
 			btnOpenFridge.addActionListener(GUIDisplay.this);
 			btnCloseFridge.addActionListener(GUIDisplay.this);
-			btnOpenFreezer.addActionListener(GUIDisplay.this);
-			btnCloseFreezer.addActionListener(GUIDisplay.this);
+			//btnOpenFreezer.addActionListener(GUIDisplay.this);
+			//btnCloseFreezer.addActionListener(GUIDisplay.this);
 			
 			pack();
 			setVisible(true);
@@ -148,50 +147,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	@Override
 	public void turnFridgeLightOff() {
 		frame.lblFridgeLight.setText("Fridge light <off>");
-	}
-
-	/**
-	 * Sets the text for the lblFreezerLight to show the
-	 * light is on.
-	 */
-	@Override
-	public void turnFreezerLightOn() {
-		frame.lblFreezerLight.setText("Freezer light <on>");		
-	}
-
-	/**
-	 * Sets the text for the lblFreezerLight to show the
-	 * light is off.
-	 */
-	@Override
-	public void turnFreezerLightOff() {
-		frame.lblFreezerLight.setText("Freezer light <off>");		
-	}
-	
-	/**
-	 * Sets the refrigerator that the display will show.
-	 */
-	@Override
-	public void setRefrigerator(Refrigerator refrigerator) {
-		this.refrigerator = refrigerator;		
-	}
-
-	/**
-	 * Sets the text for the lblFreezerCompStatus to show the
-	 * freezer is cooling.
-	 */
-	@Override
-	public void freezerCooling() {
-		frame.lblFreezerCompStatus.setText("Freezer <cooling>");
-	}
-
-	/**
-	 * Sets the text for the lblFreezerCompStatus to show the
-	 * freezer is idle.
-	 */
-	@Override
-	public void freezerIdle() {
-		frame.lblFreezerCompStatus.setText("Freezer <idle>");
 	}
 
 	/**
@@ -219,25 +174,15 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	public void updateFridgeTemp(int temp) {
 		frame.lblFridgeTemp.setText("Fridge temp <" + temp +">");
 	}
-
-	/**
-	 * updates the freezer temp with the correct value
-	 */
-	@Override
-	public void updateFreezerTemp(int temp) {
-		frame.lblFreezerTemp.setText("Freezer temp <" + temp +">");		
-	}
 	
 	/**
 	 * Sets the initial temperatures of the display
 	 * @param - int room
 	 * @param - int fridge
-	 * @param - int freezer
 	 */
-	public void setStartTemps(int room, int fridge, int freezer){
+	public void setStartTemps(int room, int fridge){
 		frame.txtRoomTemp.setText("" + room);
 		frame.txtDesFridgeTemp.setText("" + fridge);
-		frame.txtDesFreezerTemp.setText("" + freezer);
 	}
 
 	/**
@@ -248,4 +193,15 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 		((GUIButton) event.getSource()).inform(this);
 		
 	}
+	
+	/**
+	 * Start the whole show
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		RefrigeratorDisplay display = new GUIDisplay();
+	}
+
+
 }
