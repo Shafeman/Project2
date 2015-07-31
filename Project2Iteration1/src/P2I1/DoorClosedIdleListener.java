@@ -1,7 +1,9 @@
 package P2I1;
 
-public interface DoorClosedIdleListener {
+import java.util.EventListener;
 
-	public void DoorClosedIdle(DoorClosedIdleEvent event);
-	
+public interface DoorClosedIdleListener extends EventListener{
+
+	public void doorClosedIdle(DoorClosedIdleEvent event);
+
 }

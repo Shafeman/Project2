@@ -1,6 +1,9 @@
 package P2I1;
 
-public interface DoorOpenCoolingListener {
+import java.util.EventListener;
 
-	public void DoorOpenCooling(DoorOpenCoolingEvent event);
+public interface DoorOpenCoolingListener extends EventListener{
+
+	public void doorOpenedCooling(DoorOpenIdleEvent event);
+	
 }

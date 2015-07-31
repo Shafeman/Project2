@@ -22,18 +22,7 @@ implements DoorOpenCoolingListener, DoorClosedIdleListener{
 		return instance;
 	}
 	
-	
-	@Override
-	public void DoorClosedIdle(DoorClosedIdleEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void DoorOpenCooling(DoorOpenCoolingEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void run() {
@@ -43,6 +32,17 @@ implements DoorOpenCoolingListener, DoorClosedIdleListener{
 
 	@Override
 	public void leave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doorClosedIdle(DoorClosedIdleEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void doorOpenedCooling(DoorOpenIdleEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

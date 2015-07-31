@@ -26,19 +26,7 @@ private static DoorClosedIdleState instance;
 		}
 		return instance;
 	}
-
-	@Override
-	public void doorOpenedIdle(DoorOpenIdleEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void doorClosedCooling(DoorCloseCoolingEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -50,5 +38,16 @@ private static DoorClosedIdleState instance;
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void doorOpenedIdle(DoorOpenIdleEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void doorClosedCooling(DoorCloseCoolingEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

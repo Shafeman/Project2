@@ -40,12 +40,6 @@ public class DoorOpenCoolingState extends RefrigeratorState
 	}
 
 	@Override
-	public void doorClosedCooling(DoorCloseCoolingEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
@@ -53,6 +47,12 @@ public class DoorOpenCoolingState extends RefrigeratorState
 
 	@Override
 	public void leave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doorClosedCooling(DoorCloseCoolingEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
