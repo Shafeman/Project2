@@ -44,31 +44,39 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	
 	private class SimpleDisplay extends JFrame {
 		private JLabel lblRoomTemp = new JLabel("Room Temp");
-		private JLabel lblDesFridgeTemp = new JLabel("Desired Fridge Temp");
-		//private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
-		private JLabel lblStatus = new JLabel("Status");
-		private JButton btnSetRoomTemp = new JButton("Set Room Temp");
-		private JButton btnSetDesFridgeTemp = new JButton("Set Desired Fridge Temp");
-		//private JButton btnSetDesFreezerTemp = new JButton("set Desired Freezer Temp");
-		private JButton btnOpenFridge = new JButton("Open Fridge Door");
-		private JButton btnCloseFridge = new JButton("Close Fridge Door");
-		//private JButton btnOpenFreezer = new JButton("Open Freezer Door");
-		//private JButton btnCloseFreezer = new JButton("Close Freezer Door");
+		private JLabel lblDesFridgeTemp = new JLabel("Desired Fridge Temp");		
+		private JLabel lblStatus = new JLabel("Status");		
 		private JTextField txtRoomTemp = new JTextField(40);
-		private JTextField txtDesFridgeTemp = new JTextField(40);
-		//private JTextField txtDesFreezerTemp = new JTextField(40);
-		private JLabel lblFridgeLight = new JLabel("Fridge light <off>");
-		//private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
-		private JLabel lblFridgeTemp = new JLabel("Fridge temp <>");
-		//private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
+		private JTextField txtDesFridgeTemp = new JTextField(40);		
+		private JLabel lblFridgeLight = new JLabel("Fridge light <off>");		
+		private JLabel lblFridgeTemp = new JLabel("Fridge temp <>");		
 		private JLabel lblFridgeCompStatus = new JLabel("Fridge <cooling>");
-		//private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
 		private final JPanel pnlControlButtons = new JPanel();
 		private final JPanel pnlReadOuts = new JPanel();
 		private final JPanel pnlButtonGridFormat = new JPanel();
 		private final JPanel pnlStatus = new JPanel();
 		private final JPanel pnlDesiredFields = new JPanel();
+		
+		//The new buttons
+		private GUIButton btnSetRoomTemp = new SetRoomTempButton("Set Room Temp");
+		private GUIButton btnSetDesFridgeTemp = new SetDesiredFridgeTempButton("Set Desired Fridge Temp");
+		private GUIButton btnOpenFridge = new DoorOpenButton("Open Door");
+		private GUIButton btnCloseFridge = new DoorCloseButton("Close Door");		
+		
+		//private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
+		//private JButton btnSetRoomTemp = new JButton("Set Room Temp");
+		//private JButton btnSetDesFridgeTemp = new JButton("Set Desired Fridge Temp");
+		//private JButton btnSetDesFreezerTemp = new JButton("set Desired Freezer Temp");
+		//private JButton btnOpenFridge = new JButton("Open Fridge Door");
+		//private JButton btnCloseFridge = new JButton("Close Fridge Door");
+		//private JButton btnOpenFreezer = new JButton("Open Freezer Door");
+		//private JButton btnCloseFreezer = new JButton("Close Freezer Door");
+		//private JTextField txtDesFreezerTemp = new JTextField(40);
+		//private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
+		//private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
+		//private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
 	
+		
 		/**
 		 * Constructor. Creates the Display.
 		 */
