@@ -44,7 +44,7 @@ private static DoorClosedIdleState instance;
 		
 	}
 	@Override
-	public void doorClosedCooling(DoorCloseCoolingEvent event) {
+	public void doorClosedCooling(DoorClosedCoolingEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

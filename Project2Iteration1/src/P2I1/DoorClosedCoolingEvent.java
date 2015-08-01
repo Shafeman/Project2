@@ -7,9 +7,9 @@ import java.util.EventObject;
  */
 
 @SuppressWarnings("serial")
-public class DoorCloseCoolingEvent extends EventObject {
+public class DoorClosedCoolingEvent extends EventObject {
 	
-	public DoorCloseCoolingEvent(Object source) {
+	public DoorClosedCoolingEvent(Object source) {
 		super(source);
 	}
 

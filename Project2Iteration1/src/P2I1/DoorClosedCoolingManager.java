@@ -4,14 +4,14 @@ import java.util.EventListener;
 
 import javax.swing.event.EventListenerList;
 
-public class DoorCloseCoolingManager {
+public class DoorClosedCoolingManager {
 	private EventListenerList listenerList = new EventListenerList();
-	private static DoorCloseCoolingManager instance;
+	private static DoorClosedCoolingManager instance;
 	
 	/**
 	 * Private to make it a singleton
 	 */
-	private DoorCloseCoolingManager() {
+	private DoorClosedCoolingManager() {
 	}
 
 	/**
@@ -19,9 +19,9 @@ public class DoorCloseCoolingManager {
 	 * 
 	 * @return the only instance of the class
 	 */
-	public static DoorCloseCoolingManager instance() {
+	public static DoorClosedCoolingManager instance() {
 		if (instance == null) {
-			instance = new DoorCloseCoolingManager();
+			instance = new DoorClosedCoolingManager();
 		}
 		return instance;
 	}
@@ -53,7 +53,7 @@ public class DoorCloseCoolingManager {
 	 * @param event
 	 *            the DoorClosedCoolingEvent object
 	 */
-	public <T> void processEvent(DoorCloseCoolingEvent event) {
+	public <T> void processEvent(DoorClosedCoolingEvent event) {
 		EventListener[] listeners = listenerList.getListeners(DoorClosedCoolingListener.class);
 		for (int index = 0; index < listeners.length; index++) {
 			((DoorClosedCoolingListener) listeners[index]).doorClosedCooling(event);

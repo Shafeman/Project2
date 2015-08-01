@@ -4,6 +4,6 @@ import java.util.EventListener;
 
 public interface DoorClosedCoolingListener extends EventListener {
 	
-	public void doorClosedCooling(DoorCloseCoolingEvent event);
+	public void doorClosedCooling(DoorClosedCoolingEvent event);
 	
 }
