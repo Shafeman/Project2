@@ -18,12 +18,23 @@ import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	
 	private static SimpleDisplay frame;
+	private int roomTemperature;
+	private int desiredFridgeTemperature;
+	private int fridgeTemperature;
+	private RefrigeratorDisplay display;
+	private static Properties defaults;
+
 
 	
 	private GUIDisplay() {
@@ -126,6 +137,13 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			//btnOpenFreezer.addActionListener(GUIDisplay.this);
 			//btnCloseFreezer.addActionListener(GUIDisplay.this);
 			
+			roomTemperature = Integer.parseInt(defaults.getProperty("RoomHigh"));
+			txtRoomTemp.setText("" + roomTemperature);
+			desiredFridgeTemperature = Integer.parseInt(defaults.getProperty("FridgeHigh"));
+			txtDesFridgeTemp.setText("" + desiredFridgeTemperature);
+			fridgeTemperature = roomTemperature;
+			lblFridgeTemp.setText("Fridge temp <" + fridgeTemperature +">");
+			
 			pack();
 			setVisible(true);
 		}
@@ -200,7 +218,25 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		RefrigeratorDisplay display = new GUIDisplay();
+
+		if (args.length != 1){
+			System.err.println("Please only enter one argument - the full name with the default properties");
+		} else {
+			String fileName = args[0];
+			defaults = new Properties();
+			FileReader file;
+			try {
+				file = new FileReader(fileName);
+				BufferedReader in = new BufferedReader(file);
+				defaults.load(in);
+				file.close();
+				in.close();
+				RefrigeratorDisplay display = new GUIDisplay();
+				//new Clock();
+			} catch (IOException e) {
+				System.err.println(fileName + " not found in system.");
+			}			
+		}
 	}
 
 
