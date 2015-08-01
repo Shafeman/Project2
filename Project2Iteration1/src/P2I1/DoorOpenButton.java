@@ -19,10 +19,10 @@ public class DoorOpenButton extends GUIButton{
 	}
 
 	@Override
-	public void inform(RefrigeratorDisplay display) {
+	public void inform(RefrigeratorDisplay source) {
 
-//		DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(source));
-//		DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(source));
+		DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(source));
+		DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(source));
 		
 	}
 		

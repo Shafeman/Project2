@@ -21,7 +21,7 @@ public class SetRoomTempButton extends GUIButton {
 	}
 
 	@Override
-	public void inform(RefrigeratorDisplay display) {
+	public void inform(RefrigeratorDisplay source) {
 		// TODO Auto-generated method stub
 		
 	}
