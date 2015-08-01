@@ -42,7 +42,7 @@ implements DoorOpenCoolingListener, DoorClosedIdleListener{
 		
 	}
 	@Override
-	public void doorOpenedCooling(DoorOpenIdleEvent event) {
+	public void doorOpenedCooling(DoorOpenCoolingEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
