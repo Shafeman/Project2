@@ -53,7 +53,7 @@ public class DoorClosedIdleManager {
 	 * @param event
 	 *            the DoorClosedIdleEvent object
 	 */
-	public <T> void processEvent(DoorClosedIdleEvent event) {
+	public void processEvent(DoorClosedIdleEvent event) {
 		EventListener[] listeners = listenerList.getListeners(DoorClosedIdleListener.class);
 		for (int index = 0; index < listeners.length; index++) {
 			((DoorClosedIdleListener) listeners[index]).doorClosedIdle(event);

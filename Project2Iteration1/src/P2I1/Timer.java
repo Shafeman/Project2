@@ -121,7 +121,6 @@ public class Timer implements Observer {
 			if(fridgeTemperature <= desiredFridgeTemperature){
 				DoorClosedIdleManager.instance().processEvent(new DoorClosedIdleEvent(instance));
 				this.resetCompressorTime();
-				display.fridgeIdle();
 			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorClosedIdleState){
 			doorTime++;
@@ -133,7 +132,6 @@ public class Timer implements Observer {
 			}
 			if(fridgeTemperature >= (desiredFridgeTemperature + fridgeDifferential)){
 				DoorClosedCoolingManager.instance().processEvent(new DoorClosedCoolingEvent(instance));
-				display.fridgeCooling();
 			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorOpenCoolingState){
 			doorTime++;
@@ -151,7 +149,6 @@ public class Timer implements Observer {
 			if(fridgeTemperature <= desiredFridgeTemperature){
 				DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(instance));
 				this.resetCompressorTime();
-				display.fridgeIdle();
 			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorOpenIdleState){
 			doorTime++;
@@ -164,7 +161,6 @@ public class Timer implements Observer {
 			if(fridgeTemperature >= (desiredFridgeTemperature + fridgeDifferential)){
 				DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(instance));
 				this.resetCompressorTime();
-				display.fridgeCooling();
 			}
 		}
 

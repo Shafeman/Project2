@@ -53,7 +53,7 @@ public class DoorOpenCoolingManager {
 	 * @param event
 	 *            the DoorOpenCoolingEvent object
 	 */
-	public <T> void processEvent(DoorOpenCoolingEvent event) {
+	public void processEvent(DoorOpenCoolingEvent event) {
 		EventListener[] listeners = listenerList.getListeners(DoorOpenCoolingListener.class);
 		for (int index = 0; index < listeners.length; index++) {
 			((DoorOpenCoolingListener) listeners[index]).doorOpenedCooling(event);
