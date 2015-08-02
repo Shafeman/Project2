@@ -10,7 +10,6 @@ import java.util.Observer;
 public class Timer implements Observer {
 	private static Timer instance;
 	private static RefrigeratorDisplay display;
-	private static RefrigeratorContext context;
 	private int doorTime;
 	private int compressorTime;
 	private int openWarmingRate;
@@ -27,7 +26,6 @@ public class Timer implements Observer {
 	private Timer() {
 		instance = this;
 		display = RefrigeratorDisplay.instance();
-		context = RefrigeratorContext.instance();
 		Clock.instance().addObserver(instance);
 		coolingRate = display.getProperty("FridgeCoolRate");
 		openWarmingRate = display.getProperty("FridgeRateLossDoorOpen");
@@ -70,11 +68,53 @@ public class Timer implements Observer {
 	@Override
 	public void update(Observable clock, Object value) {		
 		if (GUIDisplay.context.getCurrentState() instanceof DoorClosedCoolingState){
-			
+			compressorTime++;
+			doorTime++;
+			if(compressorTime % coolingRate == 0){
+				fridgeTemperature--;
+				display.updateFridgeTemp(fridgeTemperature);
+			}
+			if(doorTime % closedWarmingRate == 0){
+				if(fridgeTemperature < roomTemperature){
+					fridgeTemperature++;
+					display.updateFridgeTemp(fridgeTemperature);
+				}
+			}
+			if(fridgeTemperature <= desiredFridgeTemperature){
+				DoorClosedIdleManager.instance().processEvent(new DoorClosedIdleEvent(instance));
+				this.resetCompressorTime();
+				display.fridgeIdle();
+			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorClosedIdleState){
-			
+			doorTime++;
+			if(doorTime % closedWarmingRate == 0){
+				if(fridgeTemperature < roomTemperature){
+					fridgeTemperature++;
+					display.updateFridgeTemp(fridgeTemperature);
+				}
+			}
+			if(fridgeTemperature >= (desiredFridgeTemperature + fridgeDifferential)){
+				DoorClosedCoolingManager.instance().processEvent(new DoorClosedCoolingEvent(instance));
+				display.fridgeCooling();
+			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorOpenCoolingState){
-			
+			doorTime++;
+			compressorTime++;
+			if(compressorTime % coolingRate == 0){
+				fridgeTemperature--;
+				display.updateFridgeTemp(fridgeTemperature);
+			}
+			if(doorTime % openWarmingRate == 0){
+				if(fridgeTemperature < roomTemperature){
+					fridgeTemperature++;
+					display.updateFridgeTemp(fridgeTemperature);
+				}
+			}
+			if(fridgeTemperature <= desiredFridgeTemperature){
+				DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(instance));
+				this.resetCompressorTime();
+				display.fridgeIdle();
+			}
 		} else if (GUIDisplay.context.getCurrentState() instanceof DoorOpenIdleState){
 			doorTime++;
 			if(doorTime % openWarmingRate == 0){
@@ -85,7 +125,6 @@ public class Timer implements Observer {
 			}
 			if(fridgeTemperature >= (desiredFridgeTemperature + fridgeDifferential)){
 				DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(instance));
-				//context.changeCurrentState(DoorOpenCoolingState.instance());
 				this.resetCompressorTime();
 				display.fridgeCooling();
 			}
