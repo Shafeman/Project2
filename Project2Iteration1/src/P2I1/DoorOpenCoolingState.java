@@ -31,16 +31,11 @@ public class DoorOpenCoolingState extends RefrigeratorState
 		return instance;
 	}
 	
-	
-	
-	@Override
-	public void doorOpenedIdle(DoorOpenIdleEvent event) {
-		
-		
-	}
 
 	@Override
 	public void run() {
+		DoorClosedCoolingManager.instance().addDoorClosedCoolingListener(instance);
+		DoorOpenIdleManager.instance().addDoorOpenIdleListener(instance);
 		display.turnFridgeLightOn();
 		//display.doorOpen();
 		
@@ -55,7 +50,13 @@ public class DoorOpenCoolingState extends RefrigeratorState
 
 	@Override
 	public void doorClosedCooling(DoorClosedCoolingEvent event) {
-		// TODO Auto-generated method stub
+		context.changeCurrentState(DoorClosedCoolingState.instance);
+		
+	}
+	
+	@Override
+	public void doorOpenedIdle(DoorOpenIdleEvent event) {
+		context.changeCurrentState(DoorOpenIdleState.instance);
 		
 	}
 
