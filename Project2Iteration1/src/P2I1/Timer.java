@@ -34,6 +34,8 @@ public class Timer implements Observer {
 		fridgeTemperature = display.getProperty("RoomHigh");
 		desiredFridgeTemperature = display.getProperty("FridgeHigh");
 		fridgeDifferential = display.getProperty("FridgeCompressorStartDiff");
+		compressorTime = 0;
+		doorTime = 0;
 	}
 
 	/**

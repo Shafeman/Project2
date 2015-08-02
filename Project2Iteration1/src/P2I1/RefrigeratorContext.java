@@ -3,6 +3,7 @@ package P2I1;
 public class RefrigeratorContext {
 	private static RefrigeratorDisplay refrigeratorDisplay;
 	private RefrigeratorState currentState;
+	private static Timer timer;
 	private static RefrigeratorContext instance;
 	
 	/**
@@ -12,6 +13,7 @@ public class RefrigeratorContext {
 		instance = this;
 		refrigeratorDisplay = RefrigeratorDisplay.instance();
 		currentState = DoorClosedCoolingState.instance();
+		timer = Timer.instance();
 	}
 	
 	/**
