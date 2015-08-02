@@ -33,6 +33,7 @@ public class DoorOpenButton extends GUIButton{
 		if(GUIDisplay.context.getCurrentState() instanceof DoorClosedIdleState) {
 			System.out.println("Door Open Idle");
 			DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(source));
+		
 		}		
 	}		
 }

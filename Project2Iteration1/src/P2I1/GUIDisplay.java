@@ -225,7 +225,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	}
 	
 	/**
-	 * gets the destired room temperature from the GUI
+	 * gets the desired room temperature from the GUI
 	 * @return
 	 */
 	public int getDesiredFridgeTemperature(){
@@ -249,7 +249,9 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
+		
 		((GUIButton) event.getSource()).inform(this);
+		
 		
 	}
 	

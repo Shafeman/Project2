@@ -47,7 +47,7 @@ public class DoorOpenIdleManager {
 	}
 
 	/**
-	 * Handles the request to cook.
+	 * Handles the request .
 	 * @param <T>
 	 * 
 	 * @param event
@@ -57,6 +57,7 @@ public class DoorOpenIdleManager {
 		EventListener[] listeners = listenerList.getListeners(DoorOpenIdleListener.class);
 		for (int index = 0; index < listeners.length; index++) {
 			((DoorOpenIdleListener) listeners[index]).doorOpenedIdle(event);
+			
 		}
 	}
 

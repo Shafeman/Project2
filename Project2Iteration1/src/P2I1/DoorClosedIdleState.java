@@ -1,8 +1,7 @@
 package P2I1;
 
 /**
- * State of the Refrigerator when the door is closed and idle.
- *
+ * State of the Refrigerator when the door is closed and idle. *
  */
 
 public class DoorClosedIdleState extends RefrigeratorState 
@@ -32,9 +31,13 @@ private static DoorClosedIdleState instance;
 	 */
 	@Override
 	public void run() {
+		
 		DoorClosedCoolingManager.instance().addDoorClosedCoolingListener(instance);
+		
 		DoorOpenIdleManager.instance().addDoorOpenIdleListener(instance);
+		
 		display.turnFridgeLightOff();
+		
 		display.fridgeIdle();
 		
 	}
@@ -55,7 +58,9 @@ private static DoorClosedIdleState instance;
 	 */
 	@Override
 	public void doorOpenedIdle(DoorOpenIdleEvent event) {
-		context.changeCurrentState(DoorOpenIdleState.instance);		
+		
+		context.changeCurrentState(DoorOpenIdleState.instance);	
+		
 	}
 	
 	/**
