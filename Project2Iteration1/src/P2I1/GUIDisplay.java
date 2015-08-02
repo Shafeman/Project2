@@ -80,7 +80,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 		/**
 		 * Constructor. Creates the Display.
 		 */
-		public SimpleDisplay() {
+		private SimpleDisplay() {
 			super("Refrigerator");
 			addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent event) {
