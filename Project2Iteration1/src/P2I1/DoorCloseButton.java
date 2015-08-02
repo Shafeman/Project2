@@ -7,6 +7,8 @@ package P2I1;
 @SuppressWarnings("serial")
 public class DoorCloseButton extends GUIButton{
 	
+	private DoorOpenCoolingState doorOpenCooling;
+	private DoorOpenIdleState doorOpenIdle;
 	
 	/**
 	 * The button
@@ -21,9 +23,12 @@ public class DoorCloseButton extends GUIButton{
 	@Override
 	public void inform(RefrigeratorDisplay source) {
 		
-//		DoorClosedCoolingManager.instance().processEvent(new DoorClosedCoolingEvent(source));
-//		DoorClosedIdleManager.instance().processEvent(new DoorClosedIdleEvent(source));
-		
+		if(GUIDisplay.context.getCurrentState().equals(doorOpenCooling)) {
+			DoorClosedCoolingManager.instance().processEvent(new DoorClosedCoolingEvent(source));
+		}
+		if(GUIDisplay.context.getCurrentState().equals(doorOpenIdle)) {
+			DoorClosedIdleManager.instance().processEvent(new DoorClosedIdleEvent(source));
+		}		
 	}
 	
 	

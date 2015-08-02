@@ -40,4 +40,8 @@ public class RefrigeratorContext {
 		return refrigeratorDisplay;
 	}
 	
+	public RefrigeratorState getCurrentState() {
+		return currentState;		
+	}
+	
 }
