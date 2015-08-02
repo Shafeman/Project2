@@ -1,5 +1,7 @@
 package P2I1;
 
+import P2I1.GUIDisplay.Settings;
+
 
 
 /**
@@ -11,7 +13,8 @@ package P2I1;
  *
  */
 public class DoorOpenCoolingState extends RefrigeratorState 
-	implements DoorClosedCoolingListener, DoorOpenIdleListener{
+	implements DoorClosedCoolingListener, DoorOpenIdleListener,
+	TemperatureUpListener, TemperatureDownListener{
 	
 	private static DoorOpenCoolingState instance;
 	
@@ -40,10 +43,13 @@ public class DoorOpenCoolingState extends RefrigeratorState
 	public void run() {
 		DoorClosedCoolingManager.instance().addDoorClosedCoolingListener(instance);
 		DoorOpenIdleManager.instance().addDoorOpenIdleListener(instance);
+		TemperatureUpManager.instance().addTemperatureUpListener(instance);
+		TemperatureDownManager.instance().addTemperatureDownListener(instance);
+		Timer.instance().setCoolingRate(display.getProperty(Settings.FRIDGE_COOL_RATE));
+		Timer.instance().setWarmingRate(display.getProperty(Settings.FRIDGE_RATE_LOSS_DOOR_OPEN));
+		Timer.instance().resetCompressorTime();
 		display.turnFridgeLightOn();
 		display.fridgeCooling();
-		//display.doorOpen();
-		
 	}
 
 	/**
@@ -54,7 +60,8 @@ public class DoorOpenCoolingState extends RefrigeratorState
 	public void leave() {
 		DoorClosedCoolingManager.instance().removeDoorClosedCoolingListener(this);
 		DoorOpenIdleManager.instance().removeDoorOpenIdleListener(this);
-		
+		TemperatureUpManager.instance().removeTemperatureUpListener(this);
+		TemperatureDownManager.instance().removeTemperatureDownListener(this);			
 	}
 
 	/**
@@ -73,6 +80,31 @@ public class DoorOpenCoolingState extends RefrigeratorState
 	public void doorOpenedIdle(DoorOpenIdleEvent event) {
 		context.changeCurrentState(DoorOpenIdleState.instance());
 		
+	}
+	
+	/**
+	 * Handles temperature lowering events
+	 */
+	@Override
+	public void lowerTemp(TemperatureDownEvent event) {
+		context.lowerCurrentTemperature();
+		int temp = context.getCurrentTemperature();
+		display.updateFridgeTemp(temp);
+		if(temp <= display.getDesiredFridgeTemperature()){
+			DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(instance));
+		}		
+	}
+	
+	/**
+	 * Handles temperature raising events
+	 */
+	@Override
+	public void raiseTemp(TemperatureUpEvent event) {
+		int temp = context.getCurrentTemperature();
+		if (temp < context.getRoomTemperature()){
+			context.raiseCurrentTemperature();
+			display.updateFridgeTemp(++temp);
+		}	
 	}
 
 }

@@ -71,4 +71,28 @@ public abstract class RefrigeratorDisplay extends Observable{
 	 * @return
 	 */
 	public abstract int getProperty(String property);
+	
+	/**
+	 * gets the room temperature from the GUI
+	 * @return
+	 */
+	public abstract int getRoomTemperatureSetting();
+	
+	/**
+	 * gets the desired room temperature from the GUI
+	 * @return
+	 */
+	public abstract int getDesiredFridgeTemperature();
+	
+	/**
+	 * resets the room temperature text box
+	 * @param value
+	 */
+	public abstract void resetRoomTemperatureDisplay(int value);
+	
+	/**
+	 * Updates the desired fridge temperature text box
+	 * @param value
+	 */
+	public abstract void resetDesiredFridgeTemperature(int value);
 }

@@ -206,7 +206,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 */
 	@Override
 	public void fridgeCooling() {
-		frame.lblFridgeCompStatus.setText("Freezer <cooling>");
+		frame.lblFridgeCompStatus.setText("Fridge <cooling>");
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 */
 	@Override
 	public void fridgeIdle() {
-		frame.lblFridgeCompStatus.setText("Freezer <idle>");		
+		frame.lblFridgeCompStatus.setText("Fridge <idle>");		
 	}
 
 	/**
@@ -230,6 +230,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * gets the room temperature from the GUI
 	 * @return
 	 */
+	@Override
 	public int getRoomTemperatureSetting(){
 		return frame.getRoomTemperature();
 	}
@@ -238,6 +239,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * gets the desired room temperature from the GUI
 	 * @return
 	 */
+	@Override
 	public int getDesiredFridgeTemperature(){
 		return frame.getFridgeTemperatureSetting();
 	}
@@ -246,6 +248,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * resets the room temperature text box
 	 * @param value
 	 */
+	@Override
 	public void resetRoomTemperatureDisplay(int value){
 		frame.setRoomTemperature("" + value);
 	}
@@ -254,6 +257,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * Updates the desired fridge temperature text box
 	 * @param value
 	 */
+	@Override
 	public void resetDesiredFridgeTemperature(int value){
 		frame.setDesiredFridgeTemperature("" + value);
 	}

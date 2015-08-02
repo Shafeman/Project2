@@ -28,11 +28,12 @@ public class DoorOpenButton extends GUIButton{
 
 		if(GUIDisplay.context.getCurrentState() instanceof DoorClosedCoolingState) {
 			DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(source));
+			Timer.instance().resetDoorTime();
 		}
 		
 		if(GUIDisplay.context.getCurrentState() instanceof DoorClosedIdleState) {
 			DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(source));
-		
+			Timer.instance().resetDoorTime();		
 		}		
 	}		
 }

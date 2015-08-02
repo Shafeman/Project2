@@ -30,9 +30,9 @@ public class SetDesiredFridgeTempButton extends GUIButton {
 		int fridgeLow = display.getProperty(Settings.FRIDGE_LOW);
 		int fridgeHigh = display.getProperty(Settings.FRIDGE_HIGH);
 		if (desiredFridgeTemperature >= fridgeLow && desiredFridgeTemperature <= fridgeHigh){
-			Timer.instance().setDesiredFridgeTemperature(display.getDesiredFridgeTemperature());
+			display.instance().context.instance().setDesiredTemperature(desiredFridgeTemperature);
 		} else {
-			display.resetDesiredFridgeTemperature(Timer.instance().getDesiredFridgeTemperature());
+			display.resetDesiredFridgeTemperature(display.instance().context.instance().getDesiredTemperature());
 		}		
 	}
 
