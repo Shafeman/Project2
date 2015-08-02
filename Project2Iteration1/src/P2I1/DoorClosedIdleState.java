@@ -60,7 +60,7 @@ private static DoorClosedIdleState instance;
 	@Override
 	public void doorOpenedIdle(DoorOpenIdleEvent event) {
 		
-		context.changeCurrentState(DoorOpenIdleState.instance);	
+		context.changeCurrentState(DoorOpenIdleState.instance());	
 		
 	}
 	
@@ -69,7 +69,7 @@ private static DoorClosedIdleState instance;
 	 */
 	@Override
 	public void doorClosedCooling(DoorClosedCoolingEvent event) {
-		context.changeCurrentState(DoorClosedCoolingState.instance);
+		context.changeCurrentState(DoorClosedCoolingState.instance());
 	}
 
 
