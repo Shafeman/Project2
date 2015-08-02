@@ -27,26 +27,43 @@ private static DoorClosedIdleState instance;
 		return instance;
 	}
 	
+	/**
+	 * This will initialize the state
+	 */
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		DoorClosedCoolingManager.instance().addDoorClosedCoolingListener(instance);
+		DoorOpenIdleManager.instance().addDoorOpenIdleListener(instance);
+		display.turnFridgeLightOff();
+		display.fridgeIdle();
 		
 	}
 
+	/**
+	 * When the Refrigerator leaves from this state, this method is called to
+	 * remove the state as a listener for the appropriate events.
+	 */
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		DoorClosedCoolingManager.instance().removeDoorClosedCoolingListener(this);
+		DoorOpenIdleManager.instance().removeDoorOpenIdleListener(this);
 		
 	}
+	
+	/**
+	 * Handles door open event when the refrigerator is idle
+	 */
 	@Override
 	public void doorOpenedIdle(DoorOpenIdleEvent event) {
-		// TODO Auto-generated method stub
-		
+		context.changeCurrentState(DoorOpenIdleState.instance);		
 	}
+	
+	/**
+	 * Handles door closed event when the refrigerator is cooling
+	 */
 	@Override
 	public void doorClosedCooling(DoorClosedCoolingEvent event) {
-		// TODO Auto-generated method stub
-		
+		context.changeCurrentState(DoorClosedCoolingState.instance);
 	}
 
 

@@ -21,29 +21,42 @@ implements DoorOpenCoolingListener, DoorClosedIdleListener{
 		}
 		return instance;
 	}
-	
 
-
+	/**
+	 * This will initialize the state
+	 */
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		DoorOpenCoolingManager.instance().addDoorOpenCoolingListener(instance);
+		DoorClosedIdleManager.instance().addDoorClosedIdleListener(instance);
+		display.turnFridgeLightOn();
+		display.fridgeIdle();
 	}
 
+	/**
+	 * When the Refrigerator leaves from this state, this method is called to
+	 * remove the state as a listener for the appropriate events.
+	 */
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-		
+		DoorOpenCoolingManager.instance().removeDoorOpenCoolingListener(this);
+		DoorClosedIdleManager.instance().removeDoorClosedIdleListener(this);
 	}
 
+	/**
+	 * Handles door closed event when the refrigerator is idle
+	 */
 	@Override
 	public void doorClosedIdle(DoorClosedIdleEvent event) {
-		// TODO Auto-generated method stub
-		
+		context.changeCurrentState(DoorClosedIdleState.instance());
 	}
+	
+	/**
+	 * Handles door open event when the refrigerator is cooling
+	 */
 	@Override
 	public void doorOpenedCooling(DoorOpenCoolingEvent event) {
-		// TODO Auto-generated method stub
+		context.changeCurrentState(DoorOpenCoolingState.instance());
 		
 	}
 
