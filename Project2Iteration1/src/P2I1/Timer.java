@@ -6,6 +6,7 @@ package P2I1;
 
 import java.util.Observable;
 import java.util.Observer;
+import P2I1.GUIDisplay.Settings;
 
 public class Timer implements Observer {
 	private static Timer instance;
@@ -27,13 +28,13 @@ public class Timer implements Observer {
 		instance = this;
 		display = RefrigeratorDisplay.instance();
 		Clock.instance().addObserver(instance);
-		coolingRate = display.getProperty("FridgeCoolRate");
-		openWarmingRate = display.getProperty("FridgeRateLossDoorOpen");
-		closedWarmingRate = display.getProperty("FridgeRateLossDoorClosed");
-		roomTemperature = display.getProperty("RoomHigh");
-		fridgeTemperature = display.getProperty("RoomHigh");
-		desiredFridgeTemperature = display.getProperty("FridgeHigh");
-		fridgeDifferential = display.getProperty("FridgeCompressorStartDiff");
+		coolingRate = display.getProperty(Settings.FRIDGE_COOL_RATE);
+		openWarmingRate = display.getProperty(Settings.FRIDGE_RATE_LOSS_DOOR_OPEN);
+		closedWarmingRate = display.getProperty(Settings.FRIDGE_RATE_LOSS_DOOR_CLOSED);
+		roomTemperature = display.getProperty(Settings.ROOM_HIGH);
+		fridgeTemperature = display.getProperty(Settings.ROOM_HIGH);
+		desiredFridgeTemperature = display.getProperty(Settings.FRIDGE_HIGH);
+		fridgeDifferential = display.getProperty(Settings.FRIDGE_COMPRESSOR_START_DIFF);
 		compressorTime = 0;
 		doorTime = 0;
 	}

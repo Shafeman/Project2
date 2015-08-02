@@ -1,5 +1,7 @@
 package P2I1;
 
+import P2I1.GUIDisplay.Settings;
+
 /**
  * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Represents a button to set the desired fridge
@@ -25,8 +27,8 @@ public class SetDesiredFridgeTempButton extends GUIButton {
 	public void inform(RefrigeratorDisplay source) {
 		GUIDisplay display = (GUIDisplay) source;
 		int desiredFridgeTemperature = display.getDesiredFridgeTemperature();
-		int fridgeLow = display.getProperty("FridgeLow");
-		int fridgeHigh = display.getProperty("FridgeHigh");
+		int fridgeLow = display.getProperty(Settings.FRIDGE_LOW);
+		int fridgeHigh = display.getProperty(Settings.FRIDGE_HIGH);
 		if (desiredFridgeTemperature >= fridgeLow && desiredFridgeTemperature <= fridgeHigh){
 			Timer.instance().setDesiredFridgeTemperature(display.getDesiredFridgeTemperature());
 		} else {

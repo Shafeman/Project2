@@ -28,6 +28,24 @@ import javax.swing.border.EmptyBorder;
 @SuppressWarnings("serial")
 public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	
+	/**
+	 * Settings to be used when calling properties from settings file
+	 * @author Chester Copperpot
+	 *
+	 */
+	public final class Settings {
+		public static final String FRIDGE_LOW = "FridgeLow";
+		public static final String FRIDGE_HIGH = "FridgeHigh";
+		public static final String ROOM_LOW = "RoomLow";
+		public static final String ROOM_HIGH = "RoomHigh";
+		public static final String FRIDGE_RATE_LOSS_DOOR_CLOSED = "FridgeRateLossDoorClosed";
+		public static final String FRIDGE_RATE_LOSS_DOOR_OPEN = "FridgeRateLossDoorOpen";
+		public static final String FRIDGE_COMPRESSOR_START_DIFF = "FridgeCompressorStartDiff";
+		public static final String FRIDGE_COOL_RATE = "FridgeCoolRate";
+		
+		private Settings() {
+		}		
+	}
 	private static SimpleDisplay frame;
 	private RefrigeratorDisplay display;
 	private static Properties defaults;
@@ -246,22 +264,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {		
 		((GUIButton) event.getSource()).inform(this);		
-	}
-	
-	/**
-	 * Updates the display to doorClosed
-	 */
-	@Override
-	public void doorClosed() {
-		
-	}
-	
-	/**
-	 * Updated the display to doorOpen
-	 */
-	@Override
-	public void doorOpen() {
-		
 	}
 	
 	/**

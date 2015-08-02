@@ -1,5 +1,7 @@
 package P2I1;
 
+import P2I1.GUIDisplay.Settings;
+
 
 /**
  * Barbarians: Douglas Brian Shaffer, Johnathan Franco
@@ -29,8 +31,8 @@ public class SetRoomTempButton extends GUIButton {
 	public void inform(RefrigeratorDisplay source) {
 		GUIDisplay display = (GUIDisplay) source;
 		int roomTemperature = display.getRoomTemperatureSetting();
-		int roomLow = display.getProperty("RoomLow");
-		int roomHigh = display.getProperty("RoomHigh");
+		int roomLow = display.getProperty(Settings.ROOM_LOW);
+		int roomHigh = display.getProperty(Settings.ROOM_HIGH);
 		if (roomTemperature >= roomLow && roomTemperature <= roomHigh){
 			Timer.instance().setRoomTemperature(display.getRoomTemperatureSetting());
 		} else {
