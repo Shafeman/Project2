@@ -63,6 +63,42 @@ public class Timer implements Observer {
 	public void resetCompressorTime(){
 		this.compressorTime = 0;
 	}
+	
+	/**
+	 * Sets the room Temperature
+	 * @param temp
+	 */
+	public void setRoomTemperature(int temp){
+		this.roomTemperature = temp;
+		if(temp < fridgeTemperature){
+			this.fridgeTemperature = temp;
+			display.updateFridgeTemp(fridgeTemperature);
+		}
+	}
+	
+	/**
+	 * Sets the desired fridge temperature
+	 * @param temp
+	 */
+	public void setDesiredFridgeTemperature(int temp){
+		this.desiredFridgeTemperature = temp;
+	}
+	
+	/**
+	 * gets room temperature
+	 * @return
+	 */
+	public int getRoomTemperature(){
+		return roomTemperature;
+	}
+	
+	/**
+	 * gets desired fridge temperature
+	 * @return
+	 */
+	public int getDesiredFridgeTemperature(){
+		return desiredFridgeTemperature;
+	}
 
 	/**
 	 * Get the clock tick and process it

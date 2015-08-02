@@ -152,6 +152,24 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			pack();
 			setVisible(true);
 		}
+		
+		public int getRoomTemperature(){
+			int temp = Integer.parseInt(txtRoomTemp.getText());
+			return temp;
+		}
+
+		public int getFridgeTemperatureSetting() {
+			int temp = Integer.parseInt(txtDesFridgeTemp.getText());
+			return temp;
+		}
+
+		public void setRoomTemperature(String value) {
+			txtRoomTemp.setText(value);			
+		}
+
+		public void setDesiredFridgeTemperature(String value) {
+			txtDesFridgeTemp.setText(value);			
+		}
 	}
 
 	/**
@@ -196,6 +214,34 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	@Override
 	public void updateFridgeTemp(int temp) {
 		frame.lblFridgeTemp.setText("Fridge temp <" + temp +">");
+	}
+	
+	/**
+	 * gets the room temperature from the GUI
+	 * @return
+	 */
+	public int getRoomTemperatureSetting(){
+		return frame.getRoomTemperature();
+	}
+	
+	/**
+	 * gets the destired room temperature from the GUI
+	 * @return
+	 */
+	public int getDesiredFridgeTemperature(){
+		return frame.getFridgeTemperatureSetting();
+	}
+	
+	/**
+	 * resets the room temperature text box
+	 * @param value
+	 */
+	public void resetRoomTemperatureDisplay(int value){
+		frame.setRoomTemperature("" + value);
+	}
+	
+	public void resetDesiredFridgeTemperature(int value){
+		frame.setDesiredFridgeTemperature("" + value);
 	}
 
 	/**

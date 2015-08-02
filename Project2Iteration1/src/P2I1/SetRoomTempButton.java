@@ -22,7 +22,14 @@ public class SetRoomTempButton extends GUIButton {
 
 	@Override
 	public void inform(RefrigeratorDisplay source) {
-		// TODO Auto-generated method stub
-		
+		GUIDisplay display = (GUIDisplay) source;
+		int roomTemperature = display.getRoomTemperatureSetting();
+		int roomLow = display.getProperty("RoomLow");
+		int roomHigh = display.getProperty("RoomHigh");
+		if (roomTemperature >= roomLow && roomTemperature <= roomHigh){
+			Timer.instance().setRoomTemperature(display.getRoomTemperatureSetting());
+		} else {
+			display.resetRoomTemperatureDisplay(Timer.instance().getRoomTemperature());
+		}
 	}
 }
