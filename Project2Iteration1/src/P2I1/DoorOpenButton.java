@@ -2,6 +2,7 @@ package P2I1;
 
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Represents the Door Open button
  *
  */

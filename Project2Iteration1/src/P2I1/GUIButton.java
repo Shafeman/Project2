@@ -3,6 +3,7 @@ package P2I1;
 import javax.swing.JButton;
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Code from the book, This abstract class 
  * helps get rid of conditionals 
  */

@@ -3,6 +3,7 @@ package P2I1;
 
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * State of the Refrigerator when the door is open and cooling.
  * When the Refrigerator is cooling and the door is opened, the
  * run method of this class is called. Then when an event occurs, 

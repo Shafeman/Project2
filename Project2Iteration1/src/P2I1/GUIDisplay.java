@@ -32,13 +32,18 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	private RefrigeratorDisplay display;
 	private static Properties defaults;
 
-
-	
+	/**
+	 * Creates the frame and displays it.
+	 */
 	private GUIDisplay() {
 		frame = new SimpleDisplay();
 		initialize();
 	}
 	
+	/**
+	 * Inner class because the outer class extends MicrowaveDisplay.
+	 *
+	 */
 	private class SimpleDisplay extends JFrame {
 		private JLabel lblRoomTemp = new JLabel("Room Temp");
 		private JLabel lblDesFridgeTemp = new JLabel("Desired Fridge Temp");		
@@ -54,26 +59,11 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 		private final JPanel pnlStatus = new JPanel();
 		private final JPanel pnlDesiredFields = new JPanel();
 		
-		//The new buttons
 		private GUIButton btnSetRoomTemp = new SetRoomTempButton("Set Room Temp");
 		private GUIButton btnSetDesFridgeTemp = new SetDesiredFridgeTempButton("Set Desired Fridge Temp");
 		private GUIButton btnOpenFridge = new DoorOpenButton("Open Door");
 		private GUIButton btnCloseFridge = new DoorCloseButton("Close Door");		
-		
-		//private JLabel lblDesFreezerTemp = new JLabel("Desired Freezer Temp");
-		//private JButton btnSetRoomTemp = new JButton("Set Room Temp");
-		//private JButton btnSetDesFridgeTemp = new JButton("Set Desired Fridge Temp");
-		//private JButton btnSetDesFreezerTemp = new JButton("set Desired Freezer Temp");
-		//private JButton btnOpenFridge = new JButton("Open Fridge Door");
-		//private JButton btnCloseFridge = new JButton("Close Fridge Door");
-		//private JButton btnOpenFreezer = new JButton("Open Freezer Door");
-		//private JButton btnCloseFreezer = new JButton("Close Freezer Door");
-		//private JTextField txtDesFreezerTemp = new JTextField(40);
-		//private JLabel lblFreezerLight = new JLabel("Freezer Light <off>");
-		//private JLabel lblFreezerTemp = new JLabel("Freezer temp <>");
-		//private JLabel lblFreezerCompStatus = new JLabel("Freezer <cooling>");
-	
-		
+
 		/**
 		 * Constructor. Creates the Display.
 		 */
@@ -97,9 +87,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			pnlDesiredFields.add(lblDesFridgeTemp);
 			pnlDesiredFields.add(txtDesFridgeTemp);
 			pnlDesiredFields.add(btnSetDesFridgeTemp);
-			//pnlDesiredFields.add(lblDesFreezerTemp);		
-			//pnlDesiredFields.add(txtDesFreezerTemp);		
-			//pnlDesiredFields.add(btnSetDesFreezerTemp);
 			
 			getContentPane().add(pnlControlButtons, BorderLayout.WEST);
 			pnlControlButtons.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));		
@@ -109,8 +96,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			pnlButtonGridFormat.setLayout(new GridLayout(2, 2, 0, 0));
 			pnlButtonGridFormat.add(btnOpenFridge);
 			pnlButtonGridFormat.add(btnCloseFridge);
-			//pnlButtonGridFormat.add(btnOpenFreezer);
-			//pnlButtonGridFormat.add(btnCloseFreezer);
 			
 			getContentPane().add(pnlReadOuts, BorderLayout.SOUTH);
 			pnlReadOuts.setBorder(new EmptyBorder(0, 5, 0, 0));
@@ -123,24 +108,15 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			lblFridgeLight.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeLight);
 			lblFridgeLight.setBorder(new EmptyBorder(2, 2, 2, 2));
-			//pnlStatus.add(lblFreezerLight);
-			//lblFreezerLight.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeTemp);
 			lblFridgeTemp.setBorder(new EmptyBorder(2, 2, 2, 2));
-			//pnlStatus.add(lblFreezerTemp);
-			//lblFreezerTemp.setBorder(new EmptyBorder(2, 2, 2, 2));
 			pnlStatus.add(lblFridgeCompStatus);
 			lblFridgeCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
-			//pnlStatus.add(lblFreezerCompStatus);
-			//lblFreezerCompStatus.setBorder(new EmptyBorder(2, 2, 2, 2));
 			
 			btnSetRoomTemp.addActionListener(GUIDisplay.this);
 			btnSetDesFridgeTemp.addActionListener(GUIDisplay.this);
-			//btnSetDesFreezerTemp.addActionListener(GUIDisplay.this);
 			btnOpenFridge.addActionListener(GUIDisplay.this);
 			btnCloseFridge.addActionListener(GUIDisplay.this);
-			//btnOpenFreezer.addActionListener(GUIDisplay.this);
-			//btnCloseFreezer.addActionListener(GUIDisplay.this);
 			
 			int roomTemperature = Integer.parseInt(defaults.getProperty("RoomHigh"));
 			txtRoomTemp.setText("" + roomTemperature);
@@ -153,20 +129,36 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			setVisible(true);
 		}
 		
+		/**
+		 * Gets the current room temperature
+		 * @return
+		 */
 		public int getRoomTemperature(){
 			int temp = Integer.parseInt(txtRoomTemp.getText());
 			return temp;
 		}
 
+		/**
+		 * gets the current desired fridge temperature
+		 * @return
+		 */
 		public int getFridgeTemperatureSetting() {
 			int temp = Integer.parseInt(txtDesFridgeTemp.getText());
 			return temp;
 		}
 
+		/**
+		 * sets the current room temperature
+		 * @param value
+		 */
 		public void setRoomTemperature(String value) {
 			txtRoomTemp.setText(value);			
 		}
 
+		/**
+		 * sets the desired fridge temperature
+		 * @param value
+		 */
 		public void setDesiredFridgeTemperature(String value) {
 			txtDesFridgeTemp.setText(value);			
 		}
@@ -240,6 +232,10 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 		frame.setRoomTemperature("" + value);
 	}
 	
+	/**
+	 * Updates the desired fridge temperature text box
+	 * @param value
+	 */
 	public void resetDesiredFridgeTemperature(int value){
 		frame.setDesiredFridgeTemperature("" + value);
 	}
@@ -248,11 +244,8 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * No more conditionals, Let the clicked button do the work
 	 */
 	@Override
-	public void actionPerformed(ActionEvent event) {
-		
-		((GUIButton) event.getSource()).inform(this);
-		
-		
+	public void actionPerformed(ActionEvent event) {		
+		((GUIButton) event.getSource()).inform(this);		
 	}
 	
 	/**
@@ -287,7 +280,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
 		if (args.length != 1){
 			System.err.println("Please only enter one argument - the full name with the default properties");
 		} else {
@@ -301,7 +293,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 				file.close();
 				in.close();
 				RefrigeratorDisplay display = new GUIDisplay();
-				//new Clock();
 			} catch (IOException e) {
 				System.err.println(fileName + " not found in system.");
 			}			

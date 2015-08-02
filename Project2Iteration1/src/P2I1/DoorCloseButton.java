@@ -1,8 +1,8 @@
-package P2I1;
-
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Represents the close door button
  */
+package P2I1;
 
 @SuppressWarnings("serial")
 public class DoorCloseButton extends GUIButton{

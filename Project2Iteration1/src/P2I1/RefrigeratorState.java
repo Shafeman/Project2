@@ -1,6 +1,7 @@
 package P2I1;
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Super class for all states
  */
 public abstract class RefrigeratorState {

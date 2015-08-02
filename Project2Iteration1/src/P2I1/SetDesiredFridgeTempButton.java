@@ -1,6 +1,7 @@
 package P2I1;
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Represents a button to set the desired fridge
  * temperature.
  *
@@ -17,6 +18,9 @@ public class SetDesiredFridgeTempButton extends GUIButton {
 		super(string);
 	}
 
+	/**
+	 * Updates the desired fridge temperature setting
+	 */
 	@Override
 	public void inform(RefrigeratorDisplay source) {
 		GUIDisplay display = (GUIDisplay) source;

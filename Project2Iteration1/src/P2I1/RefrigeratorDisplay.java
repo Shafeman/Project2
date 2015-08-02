@@ -1,5 +1,10 @@
 
 package P2I1;
+/**
+ * Barbarians: Douglas Brian Shaffer and Jonathan Franco
+ * Specifies what the display system should do. Note that the implementation has
+ * a lot of freedom to choose its display.
+ */
 
 import java.util.Observable;
 

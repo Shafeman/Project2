@@ -2,6 +2,7 @@ package P2I1;
 
 
 /**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * Represents the button to set the room
  * temperature.
  *
@@ -20,6 +21,10 @@ public class SetRoomTempButton extends GUIButton {
 		super(string);
 	}
 
+	/**
+	 * Updates the room temperature so the system can
+	 * act appropriately.
+	 */
 	@Override
 	public void inform(RefrigeratorDisplay source) {
 		GUIDisplay display = (GUIDisplay) source;

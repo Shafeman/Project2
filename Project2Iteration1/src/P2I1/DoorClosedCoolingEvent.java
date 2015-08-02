@@ -3,7 +3,8 @@ package P2I1;
 import java.util.EventObject;
 
 /**
- * Door close request
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
+ * Door close cooling request
  */
 
 @SuppressWarnings("serial")

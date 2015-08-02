@@ -1,12 +1,12 @@
+/**
+ * Barbarians: Douglas Brian Shaffer, Johnathan Franco
+ *  The Timer for the microwave
+ */
 package P2I1;
 
 import java.util.Observable;
 import java.util.Observer;
 
-/**
- * The Timer for the microwave
- *
- */
 public class Timer implements Observer {
 	private static Timer instance;
 	private static RefrigeratorDisplay display;

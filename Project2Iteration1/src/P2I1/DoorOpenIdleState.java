@@ -1,4 +1,8 @@
 package P2I1;
+/**
+* Barbarians: Douglas Brian Shaffer, Johnathan Franco
+* State of the Refrigerator when the door is open and idle.
+*/
 
 public class DoorOpenIdleState extends RefrigeratorState 
 implements DoorOpenCoolingListener, DoorClosedIdleListener{
