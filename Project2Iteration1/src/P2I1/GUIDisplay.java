@@ -221,6 +221,16 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	}
 	
 	/**
+	 * returns the int value of the property requested.
+	 * @param property
+	 * @return
+	 */
+	public static int getProperty(String property){
+		int value = Integer.parseInt(defaults.getProperty(property));
+		return value;
+	}
+	
+	/**
 	 * Start the whole show
 	 * 
 	 * @param args
