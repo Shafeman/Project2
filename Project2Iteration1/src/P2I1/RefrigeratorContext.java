@@ -36,6 +36,7 @@ public class RefrigeratorContext {
 		currentState.leave();
 		currentState = nextState;
 		nextState.run();
+		
 	}
 	
 	public RefrigeratorDisplay getDisplay() {
