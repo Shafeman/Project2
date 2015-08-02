@@ -29,7 +29,6 @@ implements DoorClosedIdleListener, DoorOpenCoolingListener{
 		DoorOpenCoolingManager.instance().addDoorOpenCoolingListener(instance);
 		display.fridgeCooling();
 		display.turnFridgeLightOff();
-		
 	}
 
 	@Override
