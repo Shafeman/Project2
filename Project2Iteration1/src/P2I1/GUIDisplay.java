@@ -29,9 +29,6 @@ import javax.swing.border.EmptyBorder;
 public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	
 	private static SimpleDisplay frame;
-	private int roomTemperature;
-	private int desiredFridgeTemperature;
-	private int fridgeTemperature;
 	private RefrigeratorDisplay display;
 	private static Properties defaults;
 
@@ -145,11 +142,11 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			//btnOpenFreezer.addActionListener(GUIDisplay.this);
 			//btnCloseFreezer.addActionListener(GUIDisplay.this);
 			
-			roomTemperature = Integer.parseInt(defaults.getProperty("RoomHigh"));
+			int roomTemperature = Integer.parseInt(defaults.getProperty("RoomHigh"));
 			txtRoomTemp.setText("" + roomTemperature);
-			desiredFridgeTemperature = Integer.parseInt(defaults.getProperty("FridgeHigh"));
+			int desiredFridgeTemperature = Integer.parseInt(defaults.getProperty("FridgeHigh"));
 			txtDesFridgeTemp.setText("" + desiredFridgeTemperature);
-			fridgeTemperature = roomTemperature;
+			int fridgeTemperature = roomTemperature;
 			lblFridgeTemp.setText("Fridge temp <" + fridgeTemperature +">");
 			
 			pack();
@@ -200,16 +197,6 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	public void updateFridgeTemp(int temp) {
 		frame.lblFridgeTemp.setText("Fridge temp <" + temp +">");
 	}
-	
-	/**
-	 * Sets the initial temperatures of the display
-	 * @param - int room
-	 * @param - int fridge
-	 */
-	public void setStartTemps(int room, int fridge){
-		frame.txtRoomTemp.setText("" + room);
-		frame.txtDesFridgeTemp.setText("" + fridge);
-	}
 
 	/**
 	 * No more conditionals, Let the clicked button do the work
@@ -225,7 +212,7 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	 * @param property
 	 * @return
 	 */
-	public static int getProperty(String property){
+	public int getProperty(String property){
 		int value = Integer.parseInt(defaults.getProperty(property));
 		return value;
 	}
@@ -256,6 +243,4 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 			}			
 		}
 	}
-
-
 }

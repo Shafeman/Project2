@@ -58,13 +58,4 @@ public abstract class RefrigeratorDisplay extends Observable{
 	 * @param temp 
 	 */
 	public abstract void updateFridgeTemp(int temp);
-	
-	/**
-	 * Sets the temperatures at the start of the program
-	 * @param room
-	 * @param fridge
-	 * @param freezer
-	 */
-	public abstract void setStartTemps(int room, int fridge);
-
 }
