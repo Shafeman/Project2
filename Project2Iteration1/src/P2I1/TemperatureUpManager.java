@@ -26,14 +26,14 @@ import javax.swing.event.EventListenerList;
  * Maintains a list of listeners for the event and invokes their method when
  * the event is "heard." 
  */
-public class DoorClosedCoolingManager {
+public class TemperatureUpManager {
 	private EventListenerList listenerList = new EventListenerList();
-	private static DoorClosedCoolingManager instance;
+	private static TemperatureUpManager instance;
 	
 	/**
 	 * Private to make it a singleton
 	 */
-	private DoorClosedCoolingManager() {
+	private TemperatureUpManager() {
 	}
 
 	/**
@@ -41,9 +41,9 @@ public class DoorClosedCoolingManager {
 	 * 
 	 * @return the only instance of the class
 	 */
-	public static DoorClosedCoolingManager instance() {
+	public static TemperatureUpManager instance() {
 		if (instance == null) {
-			instance = new DoorClosedCoolingManager();
+			instance = new TemperatureUpManager();
 		}
 		return instance;
 	}
@@ -54,8 +54,8 @@ public class DoorClosedCoolingManager {
 	 * @param listener
 	 *            an object that wants to listen to the event
 	 */
-	public void addDoorClosedCoolingListener(DoorClosedCoolingListener listener) {
-		listenerList.add(DoorClosedCoolingListener.class, listener);
+	public void addTemperatureUpListener(TemperatureUpListener listener) {
+		listenerList.add(TemperatureUpListener.class, listener);
 	}
 
 	/**
@@ -64,21 +64,21 @@ public class DoorClosedCoolingManager {
 	 * @param listener
 	 *            the object to be removed
 	 */
-	public void removeDoorClosedCoolingListener(DoorClosedCoolingListener listener) {
-		listenerList.remove(DoorClosedCoolingListener.class, listener);
+	public void removeTemperatureUpListener(TemperatureUpListener listener) {
+		listenerList.remove(TemperatureUpListener.class, listener);
 	}
 
 	/**
-	 * Handles the request to cool.
+	 * Handles the request to cook.
 	 * @param <T>
 	 * 
 	 * @param event
-	 *            the DoorClosedCoolingEvent object
+	 *            the TemperatureUpEvent object
 	 */
-	public void processEvent(DoorClosedCoolingEvent event) {
-		EventListener[] listeners = listenerList.getListeners(DoorClosedCoolingListener.class);
+	public void processEvent(TemperatureUpEvent event) {
+		EventListener[] listeners = listenerList.getListeners(TemperatureUpListener.class);
 		for (int index = 0; index < listeners.length; index++) {
-			((DoorClosedCoolingListener) listeners[index]).doorClosedCooling(event);
+			((TemperatureUpListener) listeners[index]).raiseTemp(event);
 		}
 	}
 

@@ -18,6 +18,9 @@
  * and are not responsible for any loss or damage resulting from its use.  
  */
 package P2I1;
+
+import P2I1.GUIDisplay.Settings;
+
 /**
  * Barbarians: Douglas Brian Shaffer, Johnathan Franco
  * The context is an obserer for the clock and stores the context info for
@@ -30,6 +33,9 @@ public class RefrigeratorContext {
 	private RefrigeratorState currentState;
 	private static Timer timer;
 	private static RefrigeratorContext instance;
+	private int currentTemperature;
+	private int desiredTemperature;
+	private int roomTemperature;
 	
 	/**
 	 * Singleton
@@ -38,6 +44,8 @@ public class RefrigeratorContext {
 		instance = this;
 		refrigeratorDisplay = RefrigeratorDisplay.instance();
 		currentState = DoorClosedCoolingState.instance();
+		currentTemperature = refrigeratorDisplay.getProperty(Settings.ROOM_HIGH);
+		desiredTemperature = refrigeratorDisplay.getProperty(Settings.FRIDGE_HIGH);
 		timer = Timer.instance();
 	}
 	
@@ -90,6 +98,69 @@ public class RefrigeratorContext {
 	 */
 	public RefrigeratorState getCurrentState() {
 		return currentState;		
+	}
+	
+	/**
+	 * sets the current temperature
+	 */
+	public void setCurrentTemperature(int temp){
+		this.currentTemperature = temp;
+	}
+	
+	/**
+	 * Gets the refrigerator's current temperature
+	 * @return
+	 */
+	public int getCurrentTemperature(){
+		return currentTemperature;
+	}
+	
+	/**
+	 * sets the desired temperature
+	 */
+	public void setDesiredTemperature(int temp){
+		this.desiredTemperature = temp;
+	}
+	
+	/**
+	 * Gets the refrigerator's desired temperature
+	 * @return
+	 */
+	public int getDesiredTemperature(){
+		return desiredTemperature;
+	}
+
+	/**
+	 * lowers the current temperature
+	 */
+	public void lowerCurrentTemperature() {
+		this.currentTemperature--;		
+	}
+	
+	/**
+	 * raises the current temperature
+	 */
+	public void raiseCurrentTemperature() {
+		this.currentTemperature++;
+	}
+
+	/**
+	 * sets the room temprature
+	 * @param temp
+	 */
+	public void setRoomTemperature(int temp) {
+		this.roomTemperature = temp;
+		if(temp < this.currentTemperature){
+			this.currentTemperature = temp;
+		}		
+	}
+	
+	/**
+	 * gets the room temperature
+	 * @return
+	 */
+	public int getRoomTemperature(){
+		return this.roomTemperature;
 	}
 	
 }

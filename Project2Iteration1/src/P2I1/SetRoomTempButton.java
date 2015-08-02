@@ -34,9 +34,12 @@ public class SetRoomTempButton extends GUIButton {
 		int roomLow = display.getProperty(Settings.ROOM_LOW);
 		int roomHigh = display.getProperty(Settings.ROOM_HIGH);
 		if (roomTemperature >= roomLow && roomTemperature <= roomHigh){
-			Timer.instance().setRoomTemperature(display.getRoomTemperatureSetting());
+			display.instance().context.instance().setRoomTemperature(roomTemperature);
 		} else {
-			display.resetRoomTemperatureDisplay(Timer.instance().getRoomTemperature());
+			display.resetRoomTemperatureDisplay(display.instance().context.instance().getRoomTemperature());
+		}
+		if (roomTemperature <= display.instance().context.instance().getCurrentTemperature()){
+			display.updateFridgeTemp(roomTemperature);
 		}
 	}
 }
