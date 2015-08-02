@@ -37,12 +37,12 @@ implements DoorClosedIdleListener, DoorOpenCoolingListener{
 	
 	@Override
 	public void doorOpenedCooling(DoorOpenCoolingEvent event) {
-		// TODO Auto-generated method stub
+		context.changeCurrentState(DoorOpenCoolingState.instance());
 		
 	}
 	@Override
 	public void doorClosedIdle(DoorClosedIdleEvent event) {
-		// TODO Auto-generated method stub
+		context.changeCurrentState(DoorClosedIdleState.instance());
 		
 	}
 }
