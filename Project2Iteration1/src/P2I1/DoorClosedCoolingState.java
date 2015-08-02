@@ -25,7 +25,10 @@ implements DoorClosedIdleListener, DoorOpenCoolingListener{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		DoorClosedIdleManager.instance().addDoorClosedIdleListener(instance);
+		DoorOpenCoolingManager.instance().addDoorOpenCoolingListener(instance);
+		display.fridgeCooling();
+		display.turnFridgeLightOff();
 		
 	}
 
