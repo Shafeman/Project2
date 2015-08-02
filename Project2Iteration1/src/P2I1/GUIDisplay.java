@@ -208,6 +208,22 @@ public class GUIDisplay extends RefrigeratorDisplay implements ActionListener {
 	}
 	
 	/**
+	 * Updates the display to doorClosed
+	 */
+	@Override
+	public void doorClosed() {
+		
+	}
+	
+	/**
+	 * Updated the display to doorOpen
+	 */
+	@Override
+	public void doorOpen() {
+		
+	}
+	
+	/**
 	 * returns the int value of the property requested.
 	 * @param property
 	 * @return

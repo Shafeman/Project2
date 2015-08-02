@@ -60,6 +60,17 @@ public abstract class RefrigeratorDisplay extends Observable{
 	public abstract void updateFridgeTemp(int temp);
 	
 	/**
+	 * Updates the door being open
+	 */
+	public abstract void doorOpen();
+	
+	
+	/**
+	 * Updates the door being closed
+	 */
+	public abstract void doorClosed();
+	
+	/**
 	 * returns the int value of the property requested.
 	 * @param property
 	 * @return

@@ -41,13 +41,15 @@ public class DoorOpenCoolingState extends RefrigeratorState
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		display.turnFridgeLightOn();
+		//display.doorOpen();
 		
 	}
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		DoorClosedCoolingManager.instance().removeDoorClosedCoolingListener(this);
+		DoorOpenIdleManager.instance().removeDoorOpenIdleListener(this);
 		
 	}
 

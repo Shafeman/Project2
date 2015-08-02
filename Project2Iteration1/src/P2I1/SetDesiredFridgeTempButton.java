@@ -19,7 +19,7 @@ public class SetDesiredFridgeTempButton extends GUIButton {
 
 	@Override
 	public void inform(RefrigeratorDisplay source) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
