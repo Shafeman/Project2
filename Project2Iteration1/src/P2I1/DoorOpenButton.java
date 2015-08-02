@@ -27,12 +27,10 @@ public class DoorOpenButton extends GUIButton{
 	public void inform(RefrigeratorDisplay source) {
 
 		if(GUIDisplay.context.getCurrentState() instanceof DoorClosedCoolingState) {
-			System.out.println("Door open cooling");
 			DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(source));
 		}
 		
 		if(GUIDisplay.context.getCurrentState() instanceof DoorClosedIdleState) {
-			System.out.println("Door Open Idle");
 			DoorOpenIdleManager.instance().processEvent(new DoorOpenIdleEvent(source));
 		
 		}		
