@@ -84,7 +84,8 @@ public class Timer implements Observer {
 				}
 			}
 			if(fridgeTemperature >= (desiredFridgeTemperature + fridgeDifferential)){
-				context.changeCurrentState(DoorOpenCoolingState.instance());
+				DoorOpenCoolingManager.instance().processEvent(new DoorOpenCoolingEvent(instance));
+				//context.changeCurrentState(DoorOpenCoolingState.instance());
 				this.resetCompressorTime();
 				display.fridgeCooling();
 			}
