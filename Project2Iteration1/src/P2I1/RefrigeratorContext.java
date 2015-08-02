@@ -33,6 +33,7 @@ public class RefrigeratorContext {
 	}
 	
 	public void changeCurrentState(RefrigeratorState nextState) {
+		//assert nextState != null : "nextState is null";
 		currentState.leave();
 		currentState = nextState;
 		nextState.run();
